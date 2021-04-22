@@ -1,0 +1,7 @@
+D:\YandexDisk\C#\oc_lab4\sort_prog\sort_prog\bin\Debug\sort_prog.exe.config
+D:\YandexDisk\C#\oc_lab4\sort_prog\sort_prog\bin\Debug\sort_prog.exe
+D:\YandexDisk\C#\oc_lab4\sort_prog\sort_prog\bin\Debug\sort_prog.pdb
+D:\YandexDisk\C#\oc_lab4\sort_prog\sort_prog\obj\Debug\sort_prog.csprojAssemblyReference.cache
+D:\YandexDisk\C#\oc_lab4\sort_prog\sort_prog\obj\Debug\sort_prog.csproj.CoreCompileInputs.cache
+D:\YandexDisk\C#\oc_lab4\sort_prog\sort_prog\obj\Debug\sort_prog.exe
+D:\YandexDisk\C#\oc_lab4\sort_prog\sort_prog\obj\Debug\sort_prog.pdb

@@ -1,0 +1,7 @@
+D:\YandexDisk\C#\oc_lab4\input_prog\input_prog\bin\Debug\input_prog.exe.config
+D:\YandexDisk\C#\oc_lab4\input_prog\input_prog\bin\Debug\input_prog.exe
+D:\YandexDisk\C#\oc_lab4\input_prog\input_prog\bin\Debug\input_prog.pdb
+D:\YandexDisk\C#\oc_lab4\input_prog\input_prog\obj\Debug\input_prog.csprojAssemblyReference.cache
+D:\YandexDisk\C#\oc_lab4\input_prog\input_prog\obj\Debug\input_prog.csproj.CoreCompileInputs.cache
+D:\YandexDisk\C#\oc_lab4\input_prog\input_prog\obj\Debug\input_prog.exe
+D:\YandexDisk\C#\oc_lab4\input_prog\input_prog\obj\Debug\input_prog.pdb
