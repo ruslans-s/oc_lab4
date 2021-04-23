@@ -14,25 +14,31 @@ namespace sort_prog
         {
             Console.WriteLine(line);
 
-            for (int i = 0; i < massiveMessage.Count(); i++)
+            for (int i = 1; i < massiveMessage.Count(); i++)
             {
                 Console.WriteLine(massiveMessage[i]);
             }
         }
 
+       
         static void Main(string[] args)
         {
 
             //Массив для сообщений из общей памяти
             List<string> massiveMessage = new List<string>();
+
+          
+
             massiveMessage.Clear();
 
             while (true)
             {
+                List<string> massiveForNewMessage = new List<string>();
+          
                 //Массив для сообщения из общей памяти
                 char[] message;
                 //Размер введенного сообщения
-                int size;
+                int size, size2, count;
 
                 //Получение существующего участка разделяемой памяти (название участка)
                 MemoryMappedFile sharedMemory = MemoryMappedFile.OpenExisting("MemoryFile");
@@ -42,31 +48,43 @@ namespace sort_prog
                 {
                     size = reader.ReadInt32(0);
                 }
-
-                //Считываем сообщение, используя полученный выше размер
-                using (MemoryMappedViewAccessor reader = sharedMemory.CreateViewAccessor(4, size * 2, MemoryMappedFileAccess.Read))
+                count = 4;
+                while (size != 0)
                 {
-                    //Массив символов сообщения
-                    message = new char[size];
-                    reader.ReadArray<char>(0, message, 0, size);
+                    using (MemoryMappedViewAccessor reader = sharedMemory.CreateViewAccessor(count, 4, MemoryMappedFileAccess.Read))
+                    {
+                        size = reader.ReadInt32(0);
+                    }
+
+                    count += 4;
+                    //Считываем сообщение, используя полученный выше размер
+                    using (MemoryMappedViewAccessor reader = sharedMemory.CreateViewAccessor(count, size * 2, MemoryMappedFileAccess.Read))
+                    {
+                        //Массив символов сообщения
+                        message = new char[size];
+                        reader.ReadArray<char>(0, message, 0, size);
+                    }
+
+                    count += size * 2;
+                    //Переводим из char[] в string
+                    string stringMessage = new string(message);
+
+                    massiveForNewMessage.Add(stringMessage);
                 }
-                //Переводим из char[] в string
-                string stringMessage = new string(message);
 
-                //Провека присутсвия строки в массиве
-                if (massiveMessage.IndexOf(stringMessage) == -1)
+                if (massiveForNewMessage.Count() > massiveMessage.Count())
                 {
-                    //Добавление строки в массив
-                    massiveMessage.Add(stringMessage);
-                    
-                    outList(massiveMessage, "Получено сообщение :");
+                    massiveMessage.Clear();
+                    massiveMessage = massiveForNewMessage;
+
+                    outList(massiveMessage, "Получено новое сообщение :");
                     //Сортировка
                     massiveMessage.Sort();
-                    
+
                     outList(massiveMessage, "Сортируем :");
-
+                    Console.WriteLine(" ");
                 }
-
+              
                 Thread.Sleep(200);
             }
         }
